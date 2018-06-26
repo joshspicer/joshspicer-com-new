@@ -33,7 +33,7 @@ social-links:
     external:     true
 pygments:         false
 permalink:        pretty
-markdown:         redcarpet
-redcarpet:
-  extensions:
-    - smart
+# markdown:         redcarpet
+# redcarpet:
+#   extensions:
+#     - smart
