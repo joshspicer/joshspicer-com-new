@@ -1,17 +1,31 @@
 ---
 layout: about
 title: About
-image: sample-photo.png
-caption: your name here
-welcome-message: Nice to see you here
+image: leaningtower.png
+caption: Josh
+welcome-message: Welcome!
 ---
+I'm a Computer Science/Cyber Ops student studying at **Northeastern University** in Boston.
 
-Give people something to read about you.
-Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 
-You can [get my resume]({{ site.url }}/assets/mydoc.pdf).
+Involved on campus. Eboard of various clubs and creating PARADE, an events app for NU clubs. {link}
+
+Edinburgh.
+
+
+I love playing **tennis**, attending **$20 concerts** and collecting coffee mugs from places I **travel** to.
+
+I'm currently on co-op working full-time as a **Security Consultant / Pen-Tester.**
+
+I really enjoy articulating project ideas that I work on. Many of those writings are
+over in [my notes]({{ site.url }}/). Give it a look!  
+
+Want to [meet my cat Cinnamon?]({{ site.url }}/cinnamon).
+
+Want to [CONTACT ME]({{ site.url }}/contact).
+
+Want to [ARCHIVES]({{ site.url }}/archive).
+
+
+
+(resume)

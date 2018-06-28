@@ -3,17 +3,16 @@
 		<div class="row">
 			<div class="col6">
 				<div class="copyright">
-					<!--Be nice and keep the copyright here! thanx.-->
-					&copy; 2014 - Built with <a href="http://jekyllrb.com/">Jekyll</a> using <a href="http://www.newaeonweb.com.br/sasa">SASa Block-Grid!</a>
+					&copy; 2018 Josh Spicer - <a href="https://github.com/joshspicer/sasa-jekyll-theme">Credits/Source</a>
 				</div>
 			</div>
 			<div class="col6">
 				<nav class="social-links">
 					<ul class="menu-list">
 						{% for link in site.social-links %}
-						<li>
-							<a target="{% if link.external %}_blank{% else %}_top{% endif %}" class="{{ link.icon }}" href="{{ link.url }}">{{ link.name }}</a>
-						</li>
+						<a href="{{link.url}}" target="_blank">
+								<i style="font-size:35px;color:{{link.color}}" class="fab {{ link.icon }}"></i>
+						</a>
 						{% endfor %}
 					</ul>
 				</nav>
@@ -30,7 +29,9 @@
 <!--Init Sybtax Highlighter-->
 <script>
 $(document).ready(function() {
-  $('pre code').each(function(i, e) {hljs.highlightBlock(e)});
+  $("pre code").each(function(i, e) {
+    hljs.highlightBlock(e);
+  });
 });
 //hljs.initHighlightingOnLoad();
 </script>

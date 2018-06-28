@@ -7,26 +7,24 @@
     {% include head.html %}
   </head>
   <body>
+
     {% include links.html %}
     {% include header.html %}
     <div class='container'>
       <div class="row">
         <div class="col12">
-          <h1>{{ page.title }}</h1> 
+          <h1>{{ page.title }}</h1>
         </div>
       </div>
       <div class="row">
         <div class="col4">
           <figure>
-            <img src="{{ site.url }}/images/{{ page.image }}" alt="{{ page.title }}">
-            <figcaption>
-             {{ page.caption }}
-            </figcaption>
+            <img style="border: 3px;border-style: solid;" src="{{ site.url }}/images/{{ page.image }}" alt="{{ page.title }}">
           </figure>
         </div>
         <div class="col8">
           <h3>{{ page.welcome-message }}</h3>
-            {{ content }}
+            <span class="about-content">{{ content }}</span>
         </div>
       </div>
     </div>

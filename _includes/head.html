@@ -1,7 +1,6 @@
 <!-- Charset and Facebook Like link-->
 	<meta content='text/html; charset=utf-8' http-equiv='content-type' />
 	<meta content="{{ site.facebook_appid }}" property="fb:app_id" />
-	<!-- http://t.co/dKP3o1e -->
 	<meta name="HandheldFriendly" content="True">
 	<meta name="MobileOptimized" content="320">
 <!-- Custom Meta Content -->
@@ -25,20 +24,24 @@
 	<meta http-equiv="cleartype" content="on">
 	<link href='{{ site.url }}/images/favicon.png' rel='shortcut icon'>
 <!-- Main Stylesheet -->
-	<link href='{{ site.url }}/stylesheets/style.min.css' rel='stylesheet' type='text/css' />
+	<link href='{{ site.url }}/stylesheets/style.css' rel='stylesheet' type='text/css' />
 <!-- Syntax Highlight Stylesheet -->
-	<link href='{{ site.url }}/stylesheets/github.min.css' rel='stylesheet' type='text/css' />
+	<link href='{{ site.url }}/stylesheets/github.css' rel='stylesheet' type='text/css' />
 <!-- Main Theme Stylesheet -->
-	<link href='{{ site.url }}/stylesheets/theme.min.css' rel='stylesheet' type='text/css' />
+	<link href='{{ site.url }}/stylesheets/theme.css' rel='stylesheet' type='text/css' />
+
+<!-- Josh Custom -->
+<script src="../../js/pollLambdaAPI.js"></script>
+
+<!-- font awesome -->
+<script defer src="https://use.fontawesome.com/releases/v5.1.0/js/all.js" integrity="sha384-3LK/3kTpDE/Pkp8gTNp2gR/2gOiwQ6QaO7Td0zV76UFJVhqLl4Vl3KL1We6q6wR9" crossorigin="anonymous"></script>
+
+<!-- Random line at top of screen. -->
+<hr style="border: 1px solid black;top:0;width:100%;margin:0" />
+
+<!-- Lodash -->
+<script src="https://cdn.jsdelivr.net/npm/lodash@4.17.10/lodash.min.js"></script>
+
 	<!--[if lt IE 9]>
 	<script src="http://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.js"></script>
 	<![endif]-->
-	<script>
-		(function(d, s, id) {
-			var js, fjs = d.getElementsByTagName(s)[0];
-			if (d.getElementById(id)) return;
-			js = d.createElement(s); js.id = id;
-			js.src = "//connect.facebook.net/en_GB/all.js#xfbml=1&appId=604714799556697";
-			fjs.parentNode.insertBefore(js, fjs);
-		}(document, 'script', 'facebook-jssdk'));
-	</script>

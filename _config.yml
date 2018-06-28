@@ -1,37 +1,52 @@
-title:            SASa-Jekyll-Theme
-description:      A simple jekyll theme. Fast and Lightweight.
-url:              http://www.newaeonweb.com.br/sasa-jekyll-theme # Site url. Place your path here, or leave blank to work local.
-logo:             sasa-jekyll-theme-logo.png # Replace for your own logo.
-signoff:          Sasa team # Your name.
-disqus_shortname: # disqus comments, create your account on disqus site and place your id here.
+title:            Josh Spicer
+description:      computer science student at northeastern university
+url:              https://joshspicer.com # Site url. Place your path here, or leave blank to work local.
+logo:             theme-logo.png # Replace for your own logo.
+signoff:          joshspicer # Your name.
 facebook_appid:   # appid for like button, do the same above.
 google_analytics: # Place your ID here.
 
 links:
   - name:         About
     url:          /about
-  - name:         Blog
+  - name:         Notes
     url:          /
-  - name:         Projects
-    url:          /projects
-  - name:         Contact
-    url:          mailto:yourname@yourhost.com
-    external:     true
+  # - name:         Archive
+  #   url:          /archive
+  # - name:         Contact
+  #   url:          /contact
+  # - name:         Cinnamon
+  #   url:          /cinnamon
 
 social-links:
+  - name:         Instagram
+    url:          http://instagram.com/joshspicer_
+    icon:         fa-instagram
+    color:        "#F7C277"
+    external:     true
   - name:         GitHub
-    url:          http://github.com/yourname
-    icon:         icon-github
+    url:          http://github.com/joshspicer
+    icon:         fa-github
+    color:        "#25292E"
     external:     true
   - name:         Linkedin
-    url:          # Linkedin url
-    icon:         icon-linkedin
+    url:          http://linkedin.com/in/joshspicer
+    icon:         fa-linkedin
+    color:        "#6AABE9"
     external:     true
-  - name:         Twitter
-    url:          # twitter url
-    icon:         icon-twitter
+  - name:         Facebook
+    url:          https://facebook.com/spicer.josh
+    icon:         fa-facebook
+    color:        "#3B5998"
     external:     true
-pygments:         false
+  - name:         Spotify
+    url:          https://open.spotify.com/user/joshspicer37
+    icon:         fa-spotify
+    color:        "#1db954"
+    external:     true
+
+
+highlighter:      false
 permalink:        pretty
 # markdown:         redcarpet
 # redcarpet:

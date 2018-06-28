@@ -1,0 +1,24 @@
+---
+layout: project
+title: Archive
+---
+<br>
+{% for archive in site.data.archive %}
+    <div>
+      <h2 class="archive-title">{{ archive.name }}</h2>
+        <div>
+            {% for link in archive.links %}
+                <a style="font-size: 30px" href="{{ link.url }}" target="_blank"><i class="{{ link.icon }}"></i></a>
+            {% endfor %}
+        </div>
+
+        <h4 class="archive-technologies">{{ archive.technologies }}</h4>
+
+        <p class="archive-description">
+            {{ archive.description }}
+        </p>
+
+
+        <hr>
+    </div>
+{% endfor %}

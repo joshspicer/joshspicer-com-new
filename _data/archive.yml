@@ -1,0 +1,65 @@
+- name: "Parade"
+  description: "An iOS/Android events app for Northeastern clubs."
+  technologies: "React Native / GraphQL / Auth0"
+  links:
+    - icon: "fas fa-globe"
+      url: https://parade.events/
+    - icon: "fab fa-github"
+      url: https://github.com/parade-events/
+
+- name: "Colorful Motivation"
+  description: "Colorful 'New Tab' Chrome Extension based on your age"
+  technologies: "JavaScript"
+  links:
+    - icon: "fas fa-globe"
+      url: https://chrome.google.com/webstore/detail/colorful-motivation-new-t/mebfadffaiadgfhoieipinanpcmklhil
+    - icon: "fab fa-github"
+      url: https://github.com/joshspicer/colorful-motivation
+
+- name: "Spotify 'what's playing'?"
+  description: "API to display your Spotify 'now playing' anywhere on the web."
+  technologies: "python / AWS Lambda"
+  # links:
+  #   - icon: "fas fa-globe"
+  #     url: https://chrome.google.com/webstore/detail/colorful-motivation-new-t/mebfadffaiadgfhoieipinanpcmklhil
+  #   - icon: "fab fa-github"
+  #     url: https://github.com/ParadeEvents/
+
+- name: "dodger.sh"
+  description: "Shell dodger game written in an afternoon"
+  technologies: "bash"
+  links:
+    - icon: "fas fa-file-download"
+      url: https://raw.githubusercontent.com/joshspicer/dodger.sh/master/dodger.sh
+
+- name: "HuskyHunter"
+  description: "Team coordination web app used in the annual Northeastern Husky Hunt"
+  technologies: "Angular.js / MongoDB"
+  links:
+    - icon: "fab fa-github"
+      url: https://github.com/nathanold/HuskyHunter
+
+- name: "Cryptopals"
+  description: "My ongoing attempts at solving cryptopals cryptography challenges."
+  technologies: "python"
+  links:
+    - icon: "fab fa-github"
+      url: https://github.com/joshspicer/crypto-pals
+
+- name: "Spotify Party Queue"
+  description: "Webapp to quickly add songs to a shared Spotify party queue. Utilizes Spotify API."
+  technologies: "node"
+  links:
+    - icon: "fab fa-github"
+      url: https://github.com/joshspicer/Spotify-Party-Queue
+
+- name: "Proximity HuskyLock Utility"
+  description: "Raspberry Pi/bluetooth proximity detection utility for HuskyLock doors."
+  technologies: "python / bash"
+
+- name: "RocketTest"
+  description: " Demonstration of a RocketChat/Web vulnerability (tabnabbing)"
+  technologies: "Security / PoC"
+  links:
+    - icon: "fas fa-globe"
+      url: https://joshspicer.com/rocketTest

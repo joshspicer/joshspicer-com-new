@@ -1,0 +1,29 @@
+<!doctype html>
+<html>
+  <head>
+    <meta content='{{ page.title }} - {{ site.title }}' name='title' />
+    <meta content='{{ page.title }} - {{ site.title }}' name='og:title' />
+    <title>{{ page.title }} - {{ site.title }}</title>
+    {% include head.html %}
+  </head>
+  <body>
+    {% include links.html %}
+    {% include header.html %}
+    <div class='container'>
+      <div class="row">
+        <div class="col12">
+          <h2>Enjoy the Cinnamon Photo of the Day</h2>
+        </div>
+      </div>
+      <div  style="width:100%" class="row">
+        <div style="width:100%" class="col12">
+          {{ content }}
+          <img style="border: 3px;border-style: solid;" class="cinnamon" id="cinnaImage" src=""/>
+        </div>
+      </div>
+    </div>
+    <script src="../../js/whichCinnamon.js"></script>
+    {% include footer.html %}
+
+  </body>
+</html>

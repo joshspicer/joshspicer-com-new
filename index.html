@@ -2,13 +2,14 @@
 layout: index
 ---
 <div class="col12">
+	<!-- <h4>northeastern students studying CS. Learn more about me here...</h4> -->
 	<section class="post-home">
-		<h1>Latest From the Blog</h1>
+		<h1>Josh's Notes</h1>
 		<ul class="post-list">
 			{% for post in site.posts %}
 			<li>
 				<small class="datetime" data-time="{{ post.date }}">{{ post.date | date_to_string }} </small>
-				<a href="{{ post.url }}">{{ post.title }}</a>
+				<a class="notes-listing" href="{{ post.url }}">{{ post.title }}</a>
 			</li>
 			{% endfor %}
 		</ul>

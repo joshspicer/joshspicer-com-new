@@ -18,9 +18,11 @@
               <h1 class="post-title">
               {{ page.title }}
               </h1>
+              <span class='post-contents'>
               {{ content }}
+            </span>
             {% include signoff.html %}
-            </article>            
+            </article>
           </section>
         </div>
       </div>
@@ -28,17 +30,7 @@
         {% include share.html %}
       {% endif %}
 
-      {% if page.disqus == 'y' %}
-        {% include disqus.html %}
-      {% endif %}
     </div>
     {% include footer.html %}
-    <script>
-      $(window).load(function () {
-        $('html, body').animate({
-          scrollTop: $(".post").offset().top
-        }, 1000);
-      });
-    </script>
   </body>
 </html>
