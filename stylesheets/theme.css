@@ -138,8 +138,7 @@ footer {
 .blog-title {
   margin: 20px auto;
   text-align: center;
-  border-bottom: thin dotted #ccc;
-  padding-bottom: 10px; }
+ }
   .blog-title p {
     font-size: 1.3em;
     font-weight: 600;

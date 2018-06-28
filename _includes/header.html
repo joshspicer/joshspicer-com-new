@@ -1,9 +1,13 @@
 <div class="container">
 	<div class="row">
 		<div class="col12">
-			<header class="blog-title">
-				<!-- <a href="/about"><img style="border-radius: 50%"; src="{{ site.url }}/images/{{ site.logo }}" alt="{{ site.title }}" width="230" height="230"></a> -->
+			<header class="blog-title row">
+				<div class="col4">
+				<a href="/about"><img style="border-radius: 50%"; src="{{ site.url }}/images/{{ site.logo }}" alt="{{ site.title }}" width="230" height="230"></a>
+			</div>
+			<div class="col8">
 				<h1>{{ site.title }}</h1>
+				<!-- Social Media -->
 				<ui>
 					{% for link in site.social-links %}
 				<span style="padding:0;margin:0">
@@ -14,15 +18,19 @@
 					</a>
 				</span>
 					{% endfor %}
+					<!-- End Social Media -->
 				</ui>
-				<!-- Social Media -->
-
 					<!-- Josh's Spotify Lambda function -->
 				<p>
           <span id='spotify'>{{ site.description }}</span>
 				</p>
+
 				<a href="{{site.url}}/test-spotify"><h5>add a song to my queue!</h5></a>
+			</div>
+
 			</header>
+			<div class="blog-title-divider"></div>
+
 		</div>
 	</div>
 </div>

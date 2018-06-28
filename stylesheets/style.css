@@ -678,3 +678,9 @@ hr {
 .archive-description {
   font-size: 18px;
 }
+
+.blog-title-divider {
+  border-bottom: thin dotted #ccc;
+  padding-bottom: 10px;
+  width: 100%;
+}
