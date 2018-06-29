@@ -5,7 +5,7 @@ date: 2018-03-18 15:27:31
 permalink: cryptopals
 ---
 
-> I recently discovered the the [cryptopals](http://cryptopals.com) crypto challenges by nccgroup. I'll be recording my solutions here.
+> I recently discovered the [cryptopals](http://cryptopals.com) crypto challenges by nccgroup. I'll be recording my solutions here.
 
 <h3>set1</h3>
 ```

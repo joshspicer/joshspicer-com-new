@@ -2,9 +2,10 @@
 layout: post
 title: Colorful Motivation - Chrome's Newest New Tab Page
 date: 2017-12-17
+permalink: colorful-motivation
 ---
 
-> As of June 2018, Colorful Motivation has 300+ users!
+> As of June 2018, Colorful Motivation has 300+ users on the [Chrome web store](https://chrome.google.com/webstore/detail/colorful-motivation-new-t/mebfadffaiadgfhoieipinanpcmklhil)!
 
 Replace your (boring and white) new tab page on Chrome with (fun and colorful) motivation. This extension displays your current age, and generates a background color based on that age.
 <br><br>
@@ -12,12 +13,16 @@ Replace your (boring and white) new tab page on Chrome with (fun and colorful) m
 
 ![img2](https://github.com/joshspicer/colorful-motivation/raw/master/time2.png)
 
-The hex color is generated from the 2nd through 7th decimal places (the beginning doesn't change much, but the least significant number changes ~5 seconds).
+The hex color is generated from the 2nd through 7th decimal places (the beginning doesn't change much, but the least significant number changes ~5 seconds). This provides a gradual change in color that is derived directly from your age.
 <br><br>
-Click on the birthday in the bottom-left corner to modify current settings.  You can see the current hex color being used in the bottom right corner.
-<br><br>
-Based off of the concept put forth in an older Chrome extension "Motivation" by maccman.
+Clicking on the birthday in the bottom-left corner allows a user to modify current settings.  The current hex color being used is displayed in the bottom-right corner.
+
 
 ![img3](https://github.com/joshspicer/colorful-motivation/raw/master/settings.png)
+
+You can play with the webpage version I created **[here]({{site.url}}/age)** before porting it to a Chrome extension.
+<br><br>
+Based off of the concept put forth in an older Chrome extension "Motivation" by [maccman](http://github.com/maccman).
+<br><br>
 
 **Find it in the Chrome Web Store [here](https://chrome.google.com/webstore/detail/colorful-motivation-new-t/mebfadffaiadgfhoieipinanpcmklhil), and check out the source on [github](https://github.com/joshspicer/colorful-motivation)**.

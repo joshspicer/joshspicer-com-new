@@ -1,13 +1,8 @@
 ---
 layout: post
-title: Survivor Northeastern
-date: 2014-01-02 15:27:31
-permalink: survivor
+title: Proximity Husky Lock Detector
+date: 2014-01-02
 ---
-
-Link to parade blog!!
-
-
 
 I am a placeholder post. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
 
