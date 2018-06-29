@@ -684,3 +684,12 @@ hr {
   padding-bottom: 10px;
   width: 100%;
 }
+
+.smaller-images img{
+  width: 70%;
+  align-content: center;
+  margin: 0 auto;
+  display: block;
+  border: 2px;
+  border-style: solid;
+}

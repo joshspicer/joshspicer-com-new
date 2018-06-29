@@ -3,29 +3,27 @@ layout: about
 title: About
 image: leaningtower.png
 caption: Josh
-welcome-message: Welcome!
+#welcome-message: Welcome!
 ---
-I'm a Computer Science/Cyber Ops student studying at **Northeastern University** in Boston.
+
+Welcome! I'm Josh - a Boston native, third-year college student studying **Computer Science at Northeastern University**.
+I am also pursuing a concentration in **Cyber Operations and Security**. This fall, I am spending a semester studying abroad
+at the **University of Edinburgh** in the UK!
+<br><br>
+I've completed one six-month co-op working full-time as a **Security Consultant / Pen-Tester.** I performed application, network, and mobile penetration testing for client companies. I also executed multiple social engineering campaigns and conducted "red team" assessments against various companies.
+<br><br>
+I love discovering new music and seeing my favorite bands play live - attending
+**$20 concerts** at small venues is my favorite thing about living in a city like Boston. Help me discover new music and [add a song to my queue]({{ site.url }}/spotify).
+<br><br>
+I also love playing **tennis**, as well as the chance to collect coffee mugs from places I **travel** to. Most of all, I love finding time to play around with technology.
+<br><br>
+I love staying involved on-campus. I help organize clubs like **CoSMO** and **nuACM**, as well as participate in groups like **CCDC** and **Survivor Northeastern**.
+<br><br>
+I'm currently developing **[Parade](https://parade.events/)**, an event discovery app (iOS/Android) for NU clubs. Learn more about why I think Parade is so important to the students of Northeastern [here]({{site.url}}/parade).
+
+You can find my email and PGP key [here]({{ site.url }}/contact).
+<br><br>
+Find my [resume here]({{ site.url }}/resume) (soon).
 
 
-Involved on campus. Eboard of various clubs and creating PARADE, an events app for NU clubs. {link}
-
-Edinburgh.
-
-
-I love playing **tennis**, attending **$20 concerts** and collecting coffee mugs from places I **travel** to.
-
-I'm currently on co-op working full-time as a **Security Consultant / Pen-Tester.**
-
-I really enjoy articulating project ideas that I work on. Many of those writings are
-over in [my notes]({{ site.url }}/). Give it a look!  
-
-Want to [meet my cat Cinnamon?]({{ site.url }}/cinnamon).
-
-Want to [CONTACT ME]({{ site.url }}/contact).
-
-Want to [ARCHIVES]({{ site.url }}/archive).
-
-
-
-(resume)
+----------
