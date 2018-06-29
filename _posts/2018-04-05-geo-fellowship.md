@@ -1,11 +1,11 @@
 ---
 layout: post
-title: "GEO Fellowship Entry"
+title: "Global Fellowship Entry"
 date: 2018-04-05
 permalink: geo-fellowship
 ---
 
-<h4> Italy: Summer 2017</h4>
+<h4> Italy - Dialogue of Civilizations -  Summer 2017</h4>
    <br>
 
    <img class="geo-fellowship-photo" src="../assets/fellowship/1.png"  />

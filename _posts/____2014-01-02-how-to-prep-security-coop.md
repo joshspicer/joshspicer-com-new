@@ -1,19 +1,18 @@
 ---
 layout: post
-title: dodger.sh (afternoon idea)
-date: 2014-01-03 15:27:31
-permalink: dodger-sh
+title: How to prep for your security co-op.
+date: 2014-01-02 15:27:31
 ---
 
->On this week's "afternoon idea", I
-> create a dodger game that you can play in your shell.
->
->
->
 
-..
-..
-..
+Natas, php docs, burp, asking for help, ccdc, http headers, OSWASP TOP 10, authN vs authZ, networking "minecraft"
+
+
+I am a placeholder post. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
+
+> Boom. I am a blockquote.
+>
+> Say something really clever here.
 
 Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim.
 

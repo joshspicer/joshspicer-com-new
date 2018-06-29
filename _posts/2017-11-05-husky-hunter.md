@@ -1,7 +1,7 @@
 ---
 layout: post
-title: Husky Hunter
-date: 2014-01-02 15:27:31
+title: HuskyHunter
+date: 2017-11-05
 permalink: husky-hunter
 ---
 
@@ -9,7 +9,7 @@ permalink: husky-hunter
 >I love Northeastern's annual "Husky Hunt". I've organized and been captain of a team for the past two years. As my team and I were gearing up for this past year's hunt, we realized our biggest bottleneck the year before was the sheer level of organization necessary to keep all our clues in order.  Thus, HuskyHunter was born.
 
 
-HuskyHunter is an angular webapp written for use in Husky Hunt 2017, and used by the team "The Real Huskies of Suffolk County". This webapp was developed by my roommate Nathan and I.
+HuskyHunter is an **Angular.js** webapp written for use in Husky Hunt 2017, and used by the team "The Real Huskies of Suffolk County". This webapp was developed by my roommate Nathan and I.
 <br><br>
 Enables coordination between clue decoders at the team's headquarters, and other members of the team out in the field. Provides a centralized point of data organization and clue completion.
 
