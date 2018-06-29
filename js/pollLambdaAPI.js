@@ -22,12 +22,14 @@ xhttp.onreadystatechange = function() {
     } else {
       songStatus = "Josh last listened to ";
     }
+
+    let writeup = "https://joshspicer.com/spotify-now-playing";
     // Song name and artist.
     songName = res.songName;
     filler1 = " by ";
     artistName = res.artistName;
     filler2 = " on spotify.";
-    spotifyStar = "<a style=href='#'>*</a>";
+    spotifyStar = "<a href='"+ writeup + "'>*</a>";
 
     document.getElementById("spotify").innerHTML =
       songStatus +
@@ -38,8 +40,8 @@ xhttp.onreadystatechange = function() {
       "<span id='spotifyGreen'>" +
       artistName +
       "</span>" +
-      filler2;
-      // + spotifyStar;
+      filler2
+      + spotifyStar;
   }
 };
 xhttp.open("GET", "https://api.joshspicer.com/spotify/current", true);
