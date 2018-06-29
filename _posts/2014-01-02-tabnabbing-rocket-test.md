@@ -6,3 +6,5 @@ permalink: Tabnabbing
 ---
 
 > oops, I forgot to add the link to this page.
+
+<a target="_blank" href="{{site.url}}/rocketTest">click me</a>

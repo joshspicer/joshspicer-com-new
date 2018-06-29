@@ -21,9 +21,9 @@ I love staying involved on-campus. I help organize clubs like **CoSMO** and **nu
 <br><br>
 I'm currently developing **[Parade](https://parade.events/)**, an event discovery app (iOS/Android) for NU clubs. Learn more about why I think Parade is so important to the students of Northeastern [here]({{site.url}}/parade).
 
-You can find my email and PGP key [here]({{ site.url }}/contact).
+**You can find my email and PGP key [here]({{ site.url }}/contact).**
 <br><br>
-Find my [resume here]({{ site.url }}/resume) (soon).
+**Find my [resume here]({{ site.url }}/resume) (soon).**
 
 
 ----------
