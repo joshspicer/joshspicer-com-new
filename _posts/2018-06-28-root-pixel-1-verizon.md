@@ -5,13 +5,8 @@ date: 2018-06-28
 permalink: root-pixel-1
 ---
 
-> I own a "Verzion edition" Pixel 1 that, up until last month, couldn't be rooted due to
-> its locked bootloader. This article outlines the steps I eventually took to get my device rooted.
-
-<h2>Intro</h2>
-
-I bought a new Pixel 1 on Ebay a couple months ago for testing an Android app i'm developing. To my surprise,
-the phone I got in the mail was not the unlocked Google version I thought I ordered (with an unlocked bootloader), but rather the locked down
+I bought a new Pixel phone on Ebay a couple months ago for testing an Android app i'm developing. To my surprise,
+the phone I received in the mail was not the unlocked Google version I thought I ordered (with an unlocked bootloader), but rather the locked down
 Verizon version.
 <br><br>
 I was hoping to eventually root the device in order to play around with some pentesting tools (specifically Frida). Sadly, I wasn't able
@@ -24,7 +19,7 @@ to find an easy solution *until now*.
 This morning I saw a [post](https://forum.xda-developers.com/pixel-xl/how-to/how-to-unlock-bootloader-verizon-pixel-t3796030) on the xda forums by user **burduli**,
 illustrating how he unlocked the bootloader on a Verizon Pixel. His article was posted on May 27th, 2018. It's taken almost **two years** since the phone's release for this simple bootloader workaround to be found!
 <br><br>
-The steps are as follows, adapted slightly based on my experience installing on Ubuntu:
+The steps are as follows, adapted slightly based on my experience and environment (Ubuntu):
 
 1. Remove Google account and PIN/Fingerprint from your device.
 2. Eject sim card from your device.
@@ -49,13 +44,10 @@ or
 <br><br>
 - If you see the error **"insufficient permissions for device error"**, you'll need to first kill the server `adb kill-server`, and then restart with root privs `sudo adb start-server`.
 <br><br>
-- Be aware that unlocking bootloader removes everything from your device. Also the fact that you factory restore in step 3 means you should be ok with this...
+- Be aware that unlocking bootloader removes everything from your device. The fact that you factory restore in step 3 means you should be ok with this...
 
 <h2>Rooting Prereqs</h2>
 
-This is where many of the guides fell apart for me. I followed a couple Pixel rooting walkthroughs, but at various steps along the way my
-device would either hang, or boot successfully but not be rooted...
-<br><br>
 These are the requirements and files I found necessary.
 - `adb` and `fastboot` (which you already have from the bootloader bit above)
 - A cable to connect phone to computer
@@ -68,8 +60,7 @@ These are the requirements and files I found necessary.
 <h2>Get rid of all the Verizon</h2>
 
 Now i'm not positive if this step is essential, but after encountering difficulty I decided to reimage the phone with an official Google
-image. Verizon may impose some configuration that was inhibiting the rooting process. Since all the guides prior dealt with
-Google-issued Pixels, I thought this may be a safe hypothesis.
+image. Either way, can't hurt to start with a clean slate.
 <br><br>
 Download the image above and follow this steps Google provides on their [factory images](https://developers.google.com/android/images) page.
 Essentially, you'll want to unzip the image archive, plug in your device, and run the `flash-all.sh` it provides. You'll need to make sure the
@@ -78,12 +69,12 @@ correct `fastboot` is in your PATH. Mine wasn't, so I modified the four spots th
 
 <h2>Prep TWRP</h2>
 
-First off, make sure to set a PIN number in the OS before continuing. You need a PIN so twrp can decrypt the file system when you enter that PIN.
+First off, make sure to set a PIN number in the OS before continuing. You need a PIN so TWRP can decrypt and access the file system later.
 <br><br>
 I had no idea what TWRP was before this guide, but apparently it's a custom recovery tool used for installing custom software on your device. The way we
 install TWRP is by first loading a temporary TWRP state onto the device, and then in that state overwriting our recovery partition with a full TWRP install.
 <br><br>
-Install the twrp .img from above, move it to your `platform-tools` folder and rename it to `twrp.img`.
+Install the .img file from above, move it to your `platform-tools` folder and rename it to `twrp.img`.
 
 `mv ~/Downloads/twrp-3.2.1-2-sailfish.img ~/Android/Sdk/platform-tools/twrp.img`
 
@@ -103,7 +94,7 @@ Great! You should now be booted into the twrp interface.
 
 ![twrp-img]({{site.url}}/assets/rooting-guide/twrp.png)
 
-Press the "install" button, navigate to your Downloads folder, and install the `twrp-pixel-installer-sailfish-3.2.1-2.zip` you downloaded to your phone earlier.
+Press the "install" button, navigate to your Downloads folder, and install the `twrp-pixel-installer-sailfish-3.2.1-2.zip` you downloaded to your phone earlier. Let that installation complete (hopefully with no errors).
 <br><br>
 Now go back a few steps to the page we started at, press the `restart` button, and then press `recovery`.  You should now boot into a version of TWRP running entirely on your device.  You can use TWRP to do a whole bunch of things...one of them being rooting the device.
 

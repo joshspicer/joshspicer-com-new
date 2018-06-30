@@ -4,14 +4,10 @@ title: Embeddable Spotify "Now Playing" with AWS Lambda
 date: 2018-06-29
 permalink: spotify-now-playing
 ---
-> This post is actively being edited!
->
-> Check back soon for the full write-up.
 
 I really love the social media aspect that Spotify brings to music. I discover so many great tracks by
 exploring what my friends listen to.  I've been really curious about uses for AWS Lambda, and decided there was
 no better "first lambda" project than this. Let's get started!
-
 <br><br>
 If you're curious what the finished product looks like, look up! My header should say something like:
 <br><br>
@@ -21,7 +17,8 @@ If you're curious what the finished product looks like, look up! My header shoul
 
 <h2>Overview</h2>
 In this guide we will be hosting a function on AWS Lambda, and using Spotify's web API to return a JSON object with the user's current or last played Spotify track. We will utilize Amazon's API Gateway to create a REST endpoint that can be used anywhere
-(I use it on my personal website). I wrote the lambda function in python, but this should be easily adaptable to work with any language.
+(I use it on my personal website) to serve dynamic content to static pages. I wrote the lambda function in python, but this should be easily adaptable to work with any language.
+
 
 <h2>Prereqs</h2>
 - AWS Account (Free Tier)
@@ -68,8 +65,7 @@ Issue this curl command in terminal with the access code you just generated.
 `curl -H "Authorization: Basic <YOUR BASE-64'd APP TOKEN>" -d grant_type=authorization_code -d code=<YOUR ACCESS CODE> -d redirect_uri=<YOUR CALLBACK URL>
 https://accounts.spotify.com/api/token`
 
-You should now have a refresh token. We can use this python function to then receive a new access token. This function places
-the access token, as well as some metadata, into a database (more on that later).
+You should now have a refresh token. We can use this python function to then receive a new access token, given a refresh token and client information. This function places the newly fetched access token, as well as some metadata, into a database (more on that later).
 
 ```
 # Only called if the current accessToken is expired (on first visit after ~1hr)
