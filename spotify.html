@@ -13,11 +13,19 @@ function initSearch() {
     if (this.readyState == 4 && this.status == 200) {
       res = JSON.parse(this.response);
       let searchData = _.get(res, "data");
-      console.log(searchData);
+      if (searchData && _.size(searchData) < 1) {
+        document.getElementById("result").innerHTML = "<p>Please Try Again!!</p>"
+        return;
+      }
       _.forEach(searchData, function(value, index) {
         document.getElementById("result").innerHTML += "<a id=\"song-" + index + "\" onclick='submitSong(" + index +", \"" + value[2] + "\")' >" + value[0] + " by " + value[1] + "</a><br>" ;
       });
     }
+
+    if (this.status == 400) {
+      document.getElementById("result").innerHTML = "<p>Please Try Again!</p>"
+    }
+
   }
   xhttp.open("GET", "https://api.joshspicer.com/spotify/search?query=" + searchQuery, true);
   xhttp.send();
@@ -36,7 +44,8 @@ function submitSong(index, song) {
   append that song to the end of my "public playlist" which can be found here. {link}
 </h5> -->
 <!-- Spotify -->
-<input class="search-query" id="searchQuery" type="text">
-<button onclick="initSearch()">Search Spotify</button>
+<input class="round" id="searchQuery" type="text">
+<br>
+<button class="myButton" onclick="initSearch()">Search Spotify</button>
 
 <p id="result"></p>
