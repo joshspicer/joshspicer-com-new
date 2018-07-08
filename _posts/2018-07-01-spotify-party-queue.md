@@ -15,11 +15,11 @@ I love discovering new music.
 Whether that be through Spotify's daily playlists, or through suggestions from a friend,  I really enjoy
 discovering, diving into, and experiencing new music.
 <br><br>
-I lied a little...songs don't directly get added to my queue, instead they get added to a [playlist called "Josh's Public Queue"](https://open.spotify.com/user/joshspicer37/playlist/0OBq0h6EjCmaPXjeCB4IlM?si=6ZeWyAiRR0u51UJK-7Hb_g). You can follow and listen to that
-playlist, and of course add song recommendations through this site.
+I've had this idea for a while - how can I make it dead-simple to add songs to a queue. With this post, i've taken it one
+step further, letting *anyone* add to my queue.
 <br><br>
-I went on a few 5-6 hour road trips this summer and noticed how annoying it is for passengers to queue songs.  Next road trip, I will
-certainly be pointing my passengers to this blog post (and watch the queue chaos ensue).
+Well ok...not *exactly* my queue. Song get added instead to a [playlist called "Josh's Public Queue"](https://open.spotify.com/user/joshspicer37/playlist/0OBq0h6EjCmaPXjeCB4IlM?si=6ZeWyAiRR0u51UJK-7Hb_g). You can follow and listen to that
+playlist, and of course add song recommendations through this site.
 
 <h2>Guide</h2>
 
