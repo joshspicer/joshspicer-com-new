@@ -1,18 +1,17 @@
 ---
 layout: post
-title: Embeddable Spotify "Now Playing" with AWS Lambda
+title: Spotify "Now Playing" with AWS Lambda
 date: 2018-06-29
 permalink: spotify-now-playing
 ---
 
 I really love the social media aspect that Spotify brings to music. I discover so many great tracks by
-exploring what my friends listen to.  I've been really curious about uses for AWS Lambda, and decided there was
-no better "first lambda" project than this. Let's get started!
+exploring what my friends listen to.  I've been really curious about uses for AWS Lambda and what it can accomplish.
+Let's get started!
 <br><br>
 If you're curious what the finished product looks like, look up! My header should say something like:
 <br><br>
 ![example]({{site.url}}/assets/resources-spotify-lambda-post/example.png)
-
 
 
 <h2>Overview</h2>

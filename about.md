@@ -13,7 +13,7 @@ at the **University of Edinburgh** in the UK!
 I've completed one six-month co-op working full-time as a **Security Consultant / Pen-Tester.** I performed application, network, and mobile penetration testing for client companies. I also executed multiple social engineering campaigns and conducted "red team" assessments against various companies.
 <br><br>
 I love discovering new music and seeing my favorite bands play live - attending
-**$20 concerts** at small venues is my favorite thing about living in a city like Boston. Help me discover new music and [add a song to my queue]({{ site.url }}/spotify).
+**$20 concerts** at small venues is my favorite thing about living in a city like Boston. Help me discover new music and [add a song to my queue]({{ site.url }}/queue).
 <br><br>
 I also love playing **tennis**, as well as the chance to collect coffee mugs from places I **travel** to. Most of all, I love finding time to play around with technology.
 <br><br>
