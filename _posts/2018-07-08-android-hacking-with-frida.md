@@ -13,13 +13,15 @@ I have little experience with Frida, so this will be a complete beginner's walkt
 on what Frida is, please check our their [documentation](https://frida.re/docs/home) first.
 
 <h2>Prereqs</h2>
-- Rooted Android Phone (check my [earlier article]({{site.url}}/root-pixel-1) for how to root Pixel Phones)
+- Rooted Android Phone
 - [OWASP's First CrackMe APK](https://github.com/OWASP/owasp-mstg/tree/master/Crackmes)
 - [Frida](https://www.frida.re/docs/javascript-api/#java)
 - [Frida-Server](...)
 - [dextojar](https://github.com/pxb1988/dex2jar) (or similar .apk ==> .jar program)
 - A Java Decompiler (I used [ByteCode Viewer](https://bytecodeviewer.com/))
 
+Check my [earlier article]({{site.url}}/root-pixel-1) for how to root Pixel Phones.
+<br><br>
 Download the APK and sideload it onto your device. ```adb install <APK>```
 
 <h2>Installing Frida</h2>
@@ -39,16 +41,17 @@ uncover the secret key. Our best bet is to see if we can understand what any of 
 <br>
 Start up `dex2jar` and convert the .apk to a .jar file.
 This will let us analyze the .apk as a .jar file and peek inside at the underlying java classes.
-```
-tracy:josh$ ./d2j-dex2jar.sh ../UnCrackable-Level1.apk
 
-# dex2jar ../UnCrackable-Level1.apk -> "./UnCrackable-Level1-dex2jar.jar"
+```
+tracy:josh$  d2j-dex2jar.sh  <UnCrackable APK>
 ```
 
 Open that up with `Bytecode-Viewer` and take a look at the classes we're working with.
+
 ```
-tracy:josh$ java -jar Bytecode-Viewer-2.9.11.jar
+tracy:josh$  java -jar Bytecode-Viewer
 ```
+
 
 ![disassembler-1]({{site.url}}/assets/resources-frida-post/disassembler-1.png)
 
@@ -69,7 +72,7 @@ Lets take a peek at the code we just decompiled and see if we can figure out how
 
 In `MainActivity.class`, we see where the dialog box "Root detected" is called.
 
-```
+{% highlight java linenos %}
 protected void onCreate(Bundle paramBundle)
 {
   if ((sg.vantagepoint.a.c.a()) || (sg.vantagepoint.a.c.b()) || (sg.vantagepoint.a.c.c())) {
@@ -77,13 +80,14 @@ protected void onCreate(Bundle paramBundle)
   }
 
   {.....truncated.....}
-```
+{% endhighlight %}
 
 So if any of these of methods `sg.vantagepoint.a.c.(a|b|c)` returns true, root detection
 will be triggered.  Lets see what these methods are.
 
 In `sg.vantage.point.a.c.class`:
-```
+
+{% highlight java linenos %}
 package sg.vantagepoint.a;
 
 import android.os.Build;
@@ -141,7 +145,7 @@ public class c
     return false;
   }
 }
-```
+{% endhighlight %}
 
 It's pretty clear that these three functions all perform different checks to
 make a guess if the phone is rooted. Since it doesn't seem like we *actually* need these
@@ -160,28 +164,30 @@ tracy:josh$ frida-ps -U | grep uncrackable
 ```
 It worked! I now have the full app identifier and its process ID. Great!  Next, lets create
 a new text file called `disableRoot.js` that contains the following payload.
-```
-  1 Java.perform(function() {
-  2         
-  3     theClass = Java.use("sg.vantagepoint.a.c");
-  4           
-  5     theClass.a.implementation = function(v) {
-  6          console.log("In function A");
-  7           return false;
-  8       }  
-  9     theClass.b.implementation = function(v) {
- 10          console.log("In function B");
- 11           return false;
- 12       }    
- 13     theClass.c.implementation = function(v) {
- 14          console.log("In function C");
- 15           return false;
- 16       }
- 17       
- 18       console.log("Exploit Complete")
- 19       
- 20     })
-```
+
+{% highlight java linenos %}
+   Java.perform(function() {
+
+       theClass = Java.use("sg.vantagepoint.a.c");
+
+       theClass.a.implementation = function(v) {
+            console.log("In function A");
+             return false;
+         }  
+       theClass.b.implementation = function(v) {
+           console.log("In function B");
+            return false;
+        }    
+      theClass.c.implementation = function(v) {
+           console.log("In function C");
+            return false;
+        }
+
+       console.log("Exploit Complete")
+
+   })
+{% endhighlight %}
+
 In this payload, we call `Java.perform`, and in its callback we hook the class
 that holds our target code. Then for each of the three methods we found earlier,
 we overwrite their implementations. The new methods simply return `false` for
@@ -229,7 +235,7 @@ Digging around the app, there's a couple crypto classes imported into various fi
 In `MainActivity.class`, we have a method called `verify()` that looks like it corresponds with the "verify" button in the app.
 Lets take a look at it.
 
-```
+{% highlight java linenos %}
 public void verify(View paramView)
 {
   paramView = ((EditText)findViewById(2131230720)).getText().toString();
@@ -248,12 +254,14 @@ public void verify(View paramView)
     localAlertDialog.setMessage("That's not it. Try again.");
   }
 }
-```
+{% endhighlight %}
+
 This looks like it gets the text from the input box, and checks it's value by
 calling `a.a(paramView)`. If that result is true, we get a dialog box telling us "Success"!
 <br><br>
 Lets now take a look at that method's implementation.
-```
+
+{% highlight java linenos %}
 public class a
 {
   public static boolean a(String paramString)
@@ -274,13 +282,15 @@ public class a
     }
     return paramString.equals(new String(arrayOfByte1));
   }
-```
+{% endhighlight %}
 
 As you can see, this method is just comparing the value we inputted with a string generated
 by this line:
-```
+
+{% highlight java %}
 sg.vantagepoint.a.a.a(b("8d127684cbc37c17616d806cf50473cc"), arrayOfByte2);
-```
+{% endhighlight %}
+
 With frida we have the ability to call any function we'd like.  Lets try to
 get the app to print the password for us, instead of feeding it into the variable in
 the function above.
@@ -297,7 +307,7 @@ continue execution. Frida lets you sit in the middle, even letting you pass and 
 Here is the complete code to my new javascript payload titled `crack.js`. Note the helper function at the top,
 which simply converts the byte array into a string we can easily read.
 
-```
+{% highlight java linenos %}
 //Helper function to decode byte[] to String
 function arrToStr(byteArr) {
   tmp = "";
@@ -345,7 +355,7 @@ Java.perform(function() {
     return rawFunctionCall;
   };
 });
-```
+{% endhighlight %}
 
 The code below the `part 2` comment sits and waits for function `a.a.a()` to be called.
 When the function is called like normal, we shortstop the result and print it. One final step that must be done before printing is to convert the byte array to a string, which is done with

@@ -46,7 +46,7 @@ social-links:
     external:     true
 
 
-highlighter:      false
+highlighter:      pygments
 permalink:        pretty
 # markdown:         redcarpet
 # redcarpet:

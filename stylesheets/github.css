@@ -4,10 +4,16 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
 
 */
 
-pre code {
+code {
   display: block; padding: 0.5em;
-  color: #333;
-  background: #f8f8ff
+  text-align: left;
+  /* color: #333;
+  background: #f8f8ff */
+}
+
+pre {
+  text-align: center;
+
 }
 
 pre .comment,
