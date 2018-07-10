@@ -15,10 +15,12 @@ on what Frida is, please check our their [documentation](https://frida.re/docs/h
 <h2>Prereqs</h2>
 - Rooted Android Phone
 - [OWASP's First CrackMe APK](https://github.com/OWASP/owasp-mstg/tree/master/Crackmes)
+<br>
 - [Frida](https://www.frida.re/docs/javascript-api/#java)
+<br>
 - [Frida-Server](...)
-- [dextojar](https://github.com/pxb1988/dex2jar) (or similar .apk ==> .jar program)
-- A Java Decompiler (I used [ByteCode Viewer](https://bytecodeviewer.com/))
+- [An .apk ==> .jar program](https://github.com/pxb1988/dex2jar)
+- [A Java Decompiler](https://bytecodeviewer.com/)
 
 Check my [earlier article]({{site.url}}/root-pixel-1) for how to root Pixel Phones.
 <br><br>
@@ -30,7 +32,7 @@ I worked off our my Macbook after installing with pip .
 
 <h2>frida-server</h2>
 The easiest way to get up and running is to run the `frida-server` software directly on your rooted
-android phone. I again followed [their guide](https://www.frida.re/docs/android/) on that. I had diffiulty escalating to root
+android phone. I again followed [their guide](https://www.frida.re/docs/android/) on that. I had difficulty escalating to root
 through adb, so I just downloaded a terminal app from the play store, became root through `su root`, and ran the server
 from there.
 
