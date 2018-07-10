@@ -12,6 +12,15 @@ code {
 }
 
 pre {
+  /* text-align: center; */
+
+}
+
+figure {
+  text-align: center;
+}
+
+.highlighter-rouge {
   text-align: center;
 
 }

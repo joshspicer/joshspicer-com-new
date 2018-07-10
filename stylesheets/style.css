@@ -242,6 +242,7 @@ p {
   margin: 0 0 1.5em;
   padding-top: 10px;
   padding-bottom: 10px;
+  color: black;
 }
 p.justify {
   text-align: justify;
