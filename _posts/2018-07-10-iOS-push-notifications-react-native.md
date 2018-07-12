@@ -1,7 +1,7 @@
 ---
 layout: post
-title: Push Notifications in React Native & iOS (Client & Server Setup)
-date: 2018-07-10
+title: Push Notifications in React Native & iOS (Client & Server Setup!)
+date: 2018-07-12
 permalink: parade-push-notifications
 ---
 
