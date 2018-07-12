@@ -6,5 +6,5 @@ permalink: parade
 ---
 
 >
-> My thoughts on [https://parade.events/](http://parade.events/) will soon be here!
+> Check out [https://parade.events/](http://parade.events/)
 >
