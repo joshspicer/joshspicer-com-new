@@ -427,7 +427,7 @@ function pushNotificationToEveryoneHelper(out, msg) {
 
 So `http://localhost:port/testPush?msg=testing123` results in...
 
-![more-remote-push]({{site.url}}/assets/resources-push-notifications/more-remote-push.png)
+![more-remote-push]({{site.url}}/assets/resources-push-notifications/more-remote-push.PNG)
 
 
 <h2>Other issues (and my fixes)</h2>
@@ -441,7 +441,7 @@ In my database, this means multiple people are likely to have the same `iOSPushN
 In this example, two accounts were used on a single device, and then both were logged out. Apple doesn't know we logged out,
 and we didn't clear the tokens from our database, so this happens.
 
-![collision-1]({{site.url}}/assets/resources-push-notifications/collision-1.png)
+![collision-1]({{site.url}}/assets/resources-push-notifications/collision-1.PNG)
 
 One solution is to clear the APN token from the user's identity on logout.
 
