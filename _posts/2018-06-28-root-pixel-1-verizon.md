@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Root your Bootlocked Verizon Pixel Phone
+title: Rooting your Bootlocked Pixel Phone (Verizon Edition)
 date: 2018-06-28
 permalink: root-pixel-1
 ---

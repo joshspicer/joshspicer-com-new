@@ -15,11 +15,11 @@ I've completed one six-month co-op working full-time as a **Security Consultant 
 I love discovering new music and seeing my favorite bands play live - attending
 **$20 concerts** at small venues is my favorite thing about living in a city like Boston. Help me discover new music and [add a song to my queue]({{ site.url }}/queue).
 <br><br>
-I also love playing **tennis**, as well as the chance to collect coffee mugs from places I **travel** to. Most of all, I love finding time to play around with technology.
+I also love playing **tennis**, as well as collecting coffee mugs from places I **travel** to. Most of all, I love finding time to play around with technology.
 <br><br>
 I love staying involved on-campus. I help organize clubs like **CoSMO** and **nuACM**, as well as participate in groups like **CCDC** and **Survivor Northeastern**.
 <br><br>
-I'm currently developing **[Parade](https://parade.events/)**, an event discovery app (iOS/Android) for NU clubs. Learn more about why I think Parade is so important to the students of Northeastern [here]({{site.url}}/parade).
+I'm currently developing **[Parade](https://parade.events/)**, an event discovery app (iOS/Android) for NU clubs.
 
 **You can find my email and PGP key [here]({{ site.url }}/contact).**
 <br><br>
