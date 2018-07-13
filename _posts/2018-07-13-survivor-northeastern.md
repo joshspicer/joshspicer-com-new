@@ -2,7 +2,7 @@
 layout: post
 title: "[Parade Blog] Why You Should Play Survivor Northeastern"
 date: 2018-07-13
-permalink: survivor-northeastern
+permalink: survivor
 ---
 
 I've been a fan of the TV show "Survivor" for all my life. This past semester, I had
