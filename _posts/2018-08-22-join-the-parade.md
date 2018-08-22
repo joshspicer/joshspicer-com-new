@@ -23,5 +23,5 @@ ideas from our very first Parade meetings.
 
 - [Universal Linking]({{site.url}}/parade-linking)
 - Lambda & GraphQL (coming soon)
-- [Push Notifications](https:/joshspicer.com/parade-push-notifications)
+- [Push Notifications]({{site.url}}/parade-push-notifications)
 - Parade Design Evolution over 12 Months (coming soon)
