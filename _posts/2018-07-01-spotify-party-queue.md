@@ -5,8 +5,9 @@ date: 2018-07-01
 permalink: spotify-public-queue
 ---
 
-> This write-up is in the works!<br>
 > Spotify public queue is what you'll find LIVE over **[here]({{site.url}}/queue)** - add a song or two!
+>
+> Have you checked out **[Part 1]({{site.url}}/spotify-now-playing)** of this write-up yet? Do that first!
 
 <h2>Intro</h2>
 
@@ -23,9 +24,9 @@ playlist, and of course add song recommendations through this site.
 
 <h2>Guide</h2>
 
-**NOTE**: This guide is an extension of my last post on Spotify "now playing" with AWS Lambda.
-<br><br>
 Make sure you first go through the **[Spotify "now playing" post]({{site.url}}/spotify-now-playing)**. That post will
 give you the background necessary in getting a Spotify client ID, as well as setting up AWS DynamoDB, API Gateway, and Lambda.
-<br><br><br>
+This guide is an extension of that post.
+<br><br>
+<br>
 (The rest of the writeup will arrive shortly. [Add a song or two]({{site.url}}/queue) in the meantime....)

@@ -6,11 +6,12 @@ permalink: parade-linking
 ---
 
 [Universal linking](https://developer.apple.com/library/archive/documentation/General/Conceptual/AppSearch/UniversalLinks.html) was
-a feature I was really exciting to implement in [Parade](https://parade.events). I thought it would be more difficult, but react-native and Apple
+a feature I was really excited to implement in [Parade](https://parade.events). I thought it would be more difficult, but react-native and Apple
 make it wicked simple to both implement and configure.
 <br><br>
 Universal linking is what lets a standard HTTP url (`https://parade.events/e/123`) trigger an installed mobile app to "jump" straight to the
-specified content.  Imagine `'123'` refers to a specific event within Parade. I can then text/share this link to friends, and they will be brought directly
+specified content. The URI is a deep link into a part of the app, while at the same time doubling as a valid HTTP link.
+Imagine `'123'` refers to a specific event within Parade. I can then text/share this link to friends, and they will be brought directly
 to event `'123'` in-app - really cool!
 
 ![linking-gif]({{site.url}}/assets/resources-parade-linking/linking.gif)

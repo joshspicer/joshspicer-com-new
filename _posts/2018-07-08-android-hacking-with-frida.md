@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Android Hacking with Frida
+title: Android Hacking with FRIDA
 date: 2018-07-08
 permalink: android-frida-1
 ---
@@ -8,6 +8,9 @@ permalink: android-frida-1
 Ever since I was introduced to Frida at an OWASP meetup a few months back,
 i've really been wanting to experiment and learn more about it. This is my walkthrough
 of utilizing Frida to complete OWASP's 1st "CrackMe" reverse engineering challenge.
+<br><br>
+Our goal with this "CrackMe" APK is to find a way to extract a "secret string". I have no idea what this "secret string" is all about,
+but i'm sure it'll be apparent once we get the app running.
 <br><br>
 I have little experience with Frida, so this will be a complete beginner's walkthrough. For more detail
 on what Frida is, please check our their [documentation](https://frida.re/docs/home) first.
@@ -18,7 +21,7 @@ on what Frida is, please check our their [documentation](https://frida.re/docs/h
 <br>
 - [Frida](https://www.frida.re/docs/javascript-api/#java)
 <br>
-- [Frida-Server](...)
+- [Frida-Server](https://www.frida.re/docs/android/)
 - [An .apk ==> .jar program](https://github.com/pxb1988/dex2jar)
 - [A Java Decompiler](https://bytecodeviewer.com/)
 
