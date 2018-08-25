@@ -5,8 +5,8 @@ date: 2018-08-22
 permalink: parade
 ---
 
-> Parade is an events discovery app I co-founded and am actively developing.
-> Check out [https://parade.events/](http://parade.events/) for our progress and for details!
+> Parade is an events discovery app I co-founded and am actively developing!
+> Check out **[https://parade.events/](https://parade.events/)** for our progress and for details!
 
 After months of planning and development, our team is *very* excited to officially [launch on the App Store](https://itunes.apple.com/us/app/parade-events/id1380171412?ls=1&mt=8)!  Northeastern students can hop onto the app
 and start exploring today!
@@ -25,3 +25,7 @@ ideas from our very first Parade meetings.
 - Lambda & GraphQL (coming soon)
 - [Push Notifications]({{site.url}}/parade-push-notifications)
 - Parade Design Evolution over 12 Months (coming soon)
+
+<br>
+Also check out our [GitHub page](https://github.com/parade-events/) which hosts a few of our public repos. Most notably is the [Parade website](https://github.com/parade-events/parade-events.github.io) that I wrote, and is live at [https://parade.events/](https://parade.events/).
+Our app's main repo and our server code is private, although code snippets can be made available upon request.
