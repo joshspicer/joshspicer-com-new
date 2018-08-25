@@ -8,7 +8,7 @@ permalink: parade
 > Parade is an events discovery app I co-founded and am actively developing!
 > Check out **[https://parade.events/](https://parade.events/)** for our progress and for details!
 
-After months of planning and development, our team is *very* excited to officially [launch on the App Store](https://itunes.apple.com/us/app/parade-events/id1380171412?ls=1&mt=8)!  Northeastern students can hop onto the app
+After months of planning and development, our team is *very* excited to officially **[launch on the App Store](https://itunes.apple.com/us/app/parade-events/id1380171412?ls=1&mt=8)**!  Northeastern students can hop onto the app
 and start exploring today!
 
 ![BetaImg](https://parade.events//blog/assets/resources-welcome/betaAd.png)
