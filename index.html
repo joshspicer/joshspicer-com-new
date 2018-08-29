@@ -9,7 +9,7 @@ layout: index
 			{% for post in site.posts %}
 			<li>
 				<small class="datetime" data-time="{{ post.date }}">{{ post.date | date_to_string }} </small>
-				<a class="notes-listing" href="{{ post.url }}">{{ post.title }}</a>
+				<a class="notes-listing module line-clamp" href="{{ post.url }}">{{ post.title }}</a>
 			</li>
 			{% endfor %}
 		</ul>

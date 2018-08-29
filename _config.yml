@@ -47,7 +47,7 @@ social-links:
     color:        "#1db954"
     external:     true
 
-
+include: [".well-known"]
 highlighter:      rouge
 permalink:        pretty
 # markdown:         redcarpet
