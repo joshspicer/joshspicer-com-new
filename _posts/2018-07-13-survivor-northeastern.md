@@ -11,3 +11,5 @@ on the third season of Survivor Northeastern!
 <br><br>
 Check out my post over on [Parade's blog](https://parade.events/blog)
 about [ Why YOU Should Play Survivor Northeastern](http://parade.events/blog/survivor-northeastern/)!
+
+![survivor-logo](https://parade.events//blog/assets/resources-survivor/logo.png)
