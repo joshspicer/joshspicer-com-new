@@ -46,6 +46,7 @@ social-links:
     icon:         fa-spotify
     color:        "#1db954"
     external:     true
+    
 
 include: [".well-known"]
 highlighter:      rouge
