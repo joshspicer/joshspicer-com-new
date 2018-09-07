@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Spotify "Now Playing" with AWS Lambda
-date: 2018-06-29
+date: 2018-07-14
 permalink: spotify-now-playing
 ---
 
