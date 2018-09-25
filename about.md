@@ -17,13 +17,11 @@ I love discovering new music and seeing my favorite bands play live - attending
 <br><br>
 I also love playing **tennis**, as well as collecting coffee mugs from places I **travel** to. Most of all, I love finding time to play around with technology.
 <br><br>
-I love staying involved on-campus. I help organize clubs like **CoSMO** and **nuACM**, as well as participate in groups like **CCDC** and **Survivor Northeastern**.
+I try to stay involved while on campus. I help organize clubs like **CoSMO** and **nuACM**, as well as participate in groups like **CCDC** and **Survivor Northeastern**.
 <br><br>
 I'm currently developing **[Parade](https://parade.events/)**, an event discovery app (iOS/Android) for NU clubs.
 
 **You can find my email and PGP key [here]({{ site.url }}/contact).**
 <br><br>
-**Find my [resume here]({{ site.url }}/resume) (soon).**
-
 
 ----------
