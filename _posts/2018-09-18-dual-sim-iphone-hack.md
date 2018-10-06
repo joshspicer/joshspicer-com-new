@@ -30,11 +30,12 @@ had dual SIM support for ages, but i'm an Apple ecosystem guy.
 3. Sign into the same iCloud account on all your devices
 5. On your daily iphone, enable the additional phone number in your Message settings
 <p></p>
+![iphone-photo]({{site.url}}/assets/resources-sim-hack/iphone-photo.jpeg)
+<p></p>
 ## Bonus Steps (for administration)
 1. Figure out a way to securely VPN into your home's network. I run an OpenVPN server on a raspberry pi acting as my gateway onto the LAN.
 2. Install **Veency** (VNC server) from Cydia on your jailbroken phone and enable.
 3. Install a VNC client on the device you'll have abroad.
 4. Connect and manage your device from across the world!
-
-
-![iphone-photo]({{site.url}}/assets/resources-sim-hack/iphone-photo.jpeg)
+<p></p>
+![vnc]({{site.url}}/assets/resources-sim-hack/VNC.png)
