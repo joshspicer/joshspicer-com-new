@@ -24,7 +24,7 @@ social-links:
   - name:         Instagram
     url:          http://instagram.com/joshspicer_
     icon:         fa-instagram
-    color:        "#F7C277"
+    color:        "#F7C277"rT
     external:     true
   - name:         GitHub
     url:          http://github.com/joshspicer
@@ -46,8 +46,10 @@ social-links:
     icon:         fa-spotify
     color:        "#1db954"
     external:     true
-    
 
+plugins:
+  - jekyll-feed
+  - jekyll-redirect-from
 include: [".well-known"]
 highlighter:      rouge
 permalink:        pretty
