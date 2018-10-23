@@ -1,6 +1,6 @@
 ---
-layout: redirected
-permalink: /race-to-paris/
+layout: post
+permalink: race-to-paris
 redirect_from:
   - /paris/
   - /rag/
