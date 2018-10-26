@@ -51,7 +51,6 @@ include: [".well-known"]
 highlighter: rouge
 permalink:  pretty
 plugins:
-  - jekyll-feed
   - jekyll-redirect-from
 # markdown:         redcarpet
 # redcarpet:
