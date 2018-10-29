@@ -6,9 +6,9 @@ caption: Josh
 #welcome-message: Welcome!
 ---
 
-Welcome! I'm Josh - a Boston native, third-year college student studying **Computer Science at Northeastern University**.
+Welcome! I'm Josh - a Boston native, third-year college student studying **Computer Science at Northeastern University[*](http://www.ccs.neu.edu/home/joshua/)**.
 I am also pursuing a concentration in **Cyber Operations and Security**. This fall, I am spending a semester studying abroad
-at the **University of Edinburgh** in the UK!
+at the **University of Edinburgh[*](https://homepages.inf.ed.ac.uk/s1883623/)** in the UK!
 <br><br>
 I've completed one six-month co-op working full-time as a **Security Consultant / Pen-Tester.** I performed application, network, and mobile penetration testing for client companies. I also executed multiple social engineering campaigns and conducted "red team" assessments against various companies.
 <br><br>
