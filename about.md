@@ -19,9 +19,9 @@ I also love playing **tennis**, as well as collecting coffee mugs from places I 
 <br><br>
 I try to stay involved while on campus. I help organize clubs like **CoSMO** and **nuACM**, as well as participate in groups like **CCDC** and **Survivor Northeastern**.
 <br><br>
-I'm currently developing **[Parade](https://parade.events/)**, an event discovery app (iOS/Android) for NU clubs.
+I'm currently developing **[Parade](https://parade.events/)**, an event discovery app (iOS/Android) for NU clubs. I also post code on [github](https://github.com/joshspicer/), and have some scripts posted as [gists](https://gist.github.com/joshspicer/).
 
 **You can find my email and PGP key [here]({{ site.url }}/contact).**
 <br><br>
 
-----------
+---
