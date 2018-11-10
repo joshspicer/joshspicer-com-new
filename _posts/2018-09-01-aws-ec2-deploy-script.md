@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "AWS ec2 Auto Deploy Scripts"
-date: 2018-08-22
+date: 2018-10-08
 permalink: aws-deploy
 ---
 

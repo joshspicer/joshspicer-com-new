@@ -3,6 +3,7 @@ layout: post
 title: Android Hacking with FRIDA
 date: 2018-07-08
 permalink: android-frida-1
+favorite: "true"
 ---
 
 Ever since I was introduced to Frida at an OWASP meetup a few months back,
@@ -27,7 +28,7 @@ on what Frida is, please check our their [documentation](https://frida.re/docs/h
 
 Check my [earlier article]({{site.url}}/root-pixel-1) for how to root Pixel Phones.
 <br><br>
-Download the APK and sideload it onto your device. ```adb install <APK>```
+Download the APK and sideload it onto your device. `adb install <APK>`
 
 <h2>Installing Frida</h2>
 Installing Frida is pretty well-documented over at [Frida's project webpage](https://www.frida.re/docs/installation/).
@@ -41,7 +42,7 @@ from there.
 
 <h2>Get started</h2>
 
-We're now ready to take a look at the .apk we're testing.   Our goal is to reverse engineer the app enough to
+We're now ready to take a look at the .apk we're testing. Our goal is to reverse engineer the app enough to
 uncover the secret key. Our best bet is to see if we can understand what any of the decompiled code is doing.
 <br>
 Start up `dex2jar` and convert the .apk to a .jar file.
@@ -57,14 +58,11 @@ Open that up with `Bytecode-Viewer` and take a look at the classes we're working
 tracy:josh$  java -jar Bytecode-Viewer
 ```
 
-
 ![disassembler-1]({{site.url}}/assets/resources-frida-post/disassembler-1.png)
-
 
 On the left sidebar you'll see the hierarchical list of classes found in this .apk. Luckily,
 there's only a few classes we have to worry about. In the center-left panel is the JD-GUI decompiled output.
 I've found this output to be pretty good, and will be referencing this output for the remainder of the article.
-
 
 <h2>Investigation: Root Detection</h2>
 
@@ -80,15 +78,15 @@ In `MainActivity.class`, we see where the dialog box "Root detected" is called.
 {% highlight java linenos %}
 protected void onCreate(Bundle paramBundle)
 {
-  if ((sg.vantagepoint.a.c.a()) || (sg.vantagepoint.a.c.b()) || (sg.vantagepoint.a.c.c())) {
-    a("Root detected!");
-  }
+if ((sg.vantagepoint.a.c.a()) || (sg.vantagepoint.a.c.b()) || (sg.vantagepoint.a.c.c())) {
+a("Root detected!");
+}
 
-  {.....truncated.....}
+{.....truncated.....}
 {% endhighlight %}
 
 So if any of these of methods `sg.vantagepoint.a.c.(a|b|c)` returns true, root detection
-will be triggered.  Lets see what these methods are.
+will be triggered. Lets see what these methods are.
 
 In `sg.vantage.point.a.c.class`:
 
@@ -100,60 +98,60 @@ import java.io.File;
 
 public class c
 {
-  public static boolean a()
-  {
-    boolean bool2 = false;
-    String[] arrayOfString = System.getenv("PATH").split(":");
-    int j = arrayOfString.length;
-    int i = 0;
-    for (;;)
-    {
-      boolean bool1 = bool2;
-      if (i < j)
-      {
-        if (new File(arrayOfString[i], "su").exists()) {
-          bool1 = true;
-        }
-      }
-      else {
-        return bool1;
-      }
-      i += 1;
-    }
-  }
+public static boolean a()
+{
+boolean bool2 = false;
+String[] arrayOfString = System.getenv("PATH").split(":");
+int j = arrayOfString.length;
+int i = 0;
+for (;;)
+{
+boolean bool1 = bool2;
+if (i < j)
+{
+if (new File(arrayOfString[i], "su").exists()) {
+bool1 = true;
+}
+}
+else {
+return bool1;
+}
+i += 1;
+}
+}
 
-  public static boolean b()
-  {
-    String str = Build.TAGS;
-    return (str != null) && (str.contains("test-keys"));
-  }
+public static boolean b()
+{
+String str = Build.TAGS;
+return (str != null) && (str.contains("test-keys"));
+}
 
-  public static boolean c()
-  {
-    String[] arrayOfString = new String[7];
-    arrayOfString[0] = "/system/app/Superuser.apk";
-    arrayOfString[1] = "/system/xbin/daemonsu";
-    arrayOfString[2] = "/system/etc/init.d/99SuperSUDaemon";
-    arrayOfString[3] = "/system/bin/.ext/.su";
-    arrayOfString[4] = "/system/etc/.has_su_daemon";
-    arrayOfString[5] = "/system/etc/.installed_su_daemon";
-    arrayOfString[6] = "/dev/com.koushikdutta.superuser.daemon/";
-    int j = arrayOfString.length;
-    int i = 0;
-    while (i < j)
-    {
-      if (new File(arrayOfString[i]).exists()) {
-        return true;
-      }
-      i += 1;
-    }
-    return false;
-  }
+public static boolean c()
+{
+String[] arrayOfString = new String[7];
+arrayOfString[0] = "/system/app/Superuser.apk";
+arrayOfString[1] = "/system/xbin/daemonsu";
+arrayOfString[2] = "/system/etc/init.d/99SuperSUDaemon";
+arrayOfString[3] = "/system/bin/.ext/.su";
+arrayOfString[4] = "/system/etc/.has_su_daemon";
+arrayOfString[5] = "/system/etc/.installed_su_daemon";
+arrayOfString[6] = "/dev/com.koushikdutta.superuser.daemon/";
+int j = arrayOfString.length;
+int i = 0;
+while (i < j)
+{
+if (new File(arrayOfString[i]).exists()) {
+return true;
+}
+i += 1;
+}
+return false;
+}
 }
 {% endhighlight %}
 
 It's pretty clear that these three functions all perform different checks to
-make a guess if the phone is rooted. Since it doesn't seem like we *actually* need these
+make a guess if the phone is rooted. Since it doesn't seem like we _actually_ need these
 methods for the functionality of the app, lets overwrite them with Frida to all return `false`.
 
 <h2>Exploitation: Root Detection</h2>
@@ -161,17 +159,19 @@ methods for the functionality of the app, lets overwrite them with Frida to all 
 Have a look at the [Frida Java API](https://www.frida.re/docs/javascript-api/#java) before continuing. We will
 be using `Java.perform` to hook and modify the implementation of methods in the class above.
 <br><br>
-First, lets figure out the name of the apk we're trying to attach to.  I guessed that the app identifer would have
+First, lets figure out the name of the apk we're trying to attach to. I guessed that the app identifer would have
 the name "uncrackable" somewhere it in, so I checked all the running processes and grepped for that pattern.
+
 ```
 tracy:josh$ frida-ps -U | grep uncrackable
 # 15137  sg.vantagepoint.uncrackable1
 ```
-It worked! I now have the full app identifier and its process ID. Great!  Next, lets create
+
+It worked! I now have the full app identifier and its process ID. Great! Next, lets create
 a new text file called `disableRoot.js` that contains the following payload.
 
 {% highlight java linenos %}
-   Java.perform(function() {
+Java.perform(function() {
 
        theClass = Java.use("sg.vantagepoint.a.c");
 
@@ -182,7 +182,7 @@ a new text file called `disableRoot.js` that contains the following payload.
        theClass.b.implementation = function(v) {
            console.log("In function B");
             return false;
-        }    
+        }
       theClass.c.implementation = function(v) {
            console.log("In function C");
             return false;
@@ -190,7 +190,7 @@ a new text file called `disableRoot.js` that contains the following payload.
 
        console.log("Exploit Complete")
 
-   })
+})
 {% endhighlight %}
 
 In this payload, we call `Java.perform`, and in its callback we hook the class
@@ -198,7 +198,7 @@ that holds our target code. Then for each of the three methods we found earlier,
 we overwrite their implementations. The new methods simply return `false` for
 all three cases. The effect is that the `if` statement in `MainActivity.class` will now always resolve to false.
 <br><br>
-Next, I actually execute the payload. Normally it's necessary to have the app running *before* hooking
+Next, I actually execute the payload. Normally it's necessary to have the app running _before_ hooking
 any functions. If we do that, however, the root detection will block us before we have a chance to modify any code.
 To get around this, I included `-f` and `--no-pause`. These flags control the order of execution, allowing the app to be spawned
 automatically, frozen so that the instrumentation can occur, and the automatically continue execution with our modified code.
@@ -214,7 +214,7 @@ tracy:josh$ frida -U --no-pause -l disableRoot.js -f sg.vantagepoint.uncrackable
    . . . .       exit/quit -> Exit
    . . . .
    . . . .   More info at http://www.frida.re/docs/home/
-Spawned `sg.vantagepoint.uncrackable1`. Resuming main thread!           
+Spawned `sg.vantagepoint.uncrackable1`. Resuming main thread!
 [Google Pixel::sg.vantagepoint.uncrackable1]-> Exploit Complete
 In function A
 In function B
@@ -232,7 +232,6 @@ Android app - so cool!
 
 ![bypass-root]({{site.url}}/assets/resources-frida-post/bypass-root.png)
 
-
 <h2>Investigation: Secret String</h2>
 
 We're in the app, but we still need the "secret string" to complete the challenge.  
@@ -243,21 +242,21 @@ Lets take a look at it.
 {% highlight java linenos %}
 public void verify(View paramView)
 {
-  paramView = ((EditText)findViewById(2131230720)).getText().toString();
-  AlertDialog localAlertDialog = new AlertDialog.Builder(this).create();
-  if (a.a(paramView))
-  {
-    localAlertDialog.setTitle("Success!");
-    localAlertDialog.setMessage("This is the correct secret.");
-  }
-  for (;;)
-  {
-    localAlertDialog.setButton(-3, "OK", new c(this));
-    localAlertDialog.show();
-    return;
-    localAlertDialog.setTitle("Nope...");
-    localAlertDialog.setMessage("That's not it. Try again.");
-  }
+paramView = ((EditText)findViewById(2131230720)).getText().toString();
+AlertDialog localAlertDialog = new AlertDialog.Builder(this).create();
+if (a.a(paramView))
+{
+localAlertDialog.setTitle("Success!");
+localAlertDialog.setMessage("This is the correct secret.");
+}
+for (;;)
+{
+localAlertDialog.setButton(-3, "OK", new c(this));
+localAlertDialog.show();
+return;
+localAlertDialog.setTitle("Nope...");
+localAlertDialog.setMessage("That's not it. Try again.");
+}
 }
 {% endhighlight %}
 
@@ -269,24 +268,24 @@ Lets now take a look at that method's implementation.
 {% highlight java linenos %}
 public class a
 {
-  public static boolean a(String paramString)
-  {
-    byte[] arrayOfByte2 = Base64.decode("5UJiFctbmgbDoLXmpL12mkno8HT4Lv8dlat8FxR2GOc=", 0);
-    byte[] arrayOfByte1 = new byte[0];
-    try
-    {
-      arrayOfByte2 = sg.vantagepoint.a.a.a(b("8d127684cbc37c17616d806cf50473cc"), arrayOfByte2);
-      arrayOfByte1 = arrayOfByte2;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        Log.d("CodeCheck", "AES error:" + localException.getMessage());
-      }
-    }
-    return paramString.equals(new String(arrayOfByte1));
-  }
+public static boolean a(String paramString)
+{
+byte[] arrayOfByte2 = Base64.decode("5UJiFctbmgbDoLXmpL12mkno8HT4Lv8dlat8FxR2GOc=", 0);
+byte[] arrayOfByte1 = new byte[0];
+try
+{
+arrayOfByte2 = sg.vantagepoint.a.a.a(b("8d127684cbc37c17616d806cf50473cc"), arrayOfByte2);
+arrayOfByte1 = arrayOfByte2;
+}
+catch (Exception localException)
+{
+for (;;)
+{
+Log.d("CodeCheck", "AES error:" + localException.getMessage());
+}
+}
+return paramString.equals(new String(arrayOfByte1));
+}
 {% endhighlight %}
 
 As you can see, this method is just comparing the value we inputted with a string generated
@@ -296,16 +295,16 @@ by this line:
 sg.vantagepoint.a.a.a(b("8d127684cbc37c17616d806cf50473cc"), arrayOfByte2);
 {% endhighlight %}
 
-With frida we have the ability to call any function we'd like.  Lets try to
+With frida we have the ability to call any function we'd like. Lets try to
 get the app to print the password for us, instead of feeding it into the variable in
 the function above.
 
 <h2>Exploitation: Secret String</h2>
 
-Originally I started writing code to get me the values for the *arguments* of `sg.vantagepoint.a.a.a()`.
+Originally I started writing code to get me the values for the _arguments_ of `sg.vantagepoint.a.a.a()`.
 I was then going to call the method myself with those calculated values.
 <br><br>
-After some difficulty, I realized I was doing way too much work! The app is eventually going to call the function *anyway*
+After some difficulty, I realized I was doing way too much work! The app is eventually going to call the function _anyway_
 with those arguments. All I need to do is wait for that to happen, and take a peak at the password before letting the app
 continue execution. Frida lets you sit in the middle, even letting you pass and inspect the variables.
 
@@ -315,50 +314,50 @@ which simply converts the byte array into a string we can easily read.
 {% highlight java linenos %}
 //Helper function to decode byte[] to String
 function arrToStr(byteArr) {
-  tmp = "";
-  for (k = 0; k < byteArr.length; k++) {
-    tmp += String.fromCharCode(byteArr[k]);
-  }
-  return tmp;
+tmp = "";
+for (k = 0; k < byteArr.length; k++) {
+tmp += String.fromCharCode(byteArr[k]);
+}
+return tmp;
 }
 
 // Java.perform wraps all of our Frida code.
 Java.perform(function() {
-  //
-  classAC = Java.use("sg.vantagepoint.a.c");
+//
+classAC = Java.use("sg.vantagepoint.a.c");
 
-  classAC.a.implementation = function(x) {
-    console.log("In function A");
-    return false;
-  };
-  classAC.b.implementation = function(x) {
-    console.log("In function B");
-    return false;
-  };
-  classAC.c.implementation = function(x) {
-    console.log("In function C");
-    return false;
-  };
+classAC.a.implementation = function(x) {
+console.log("In function A");
+return false;
+};
+classAC.b.implementation = function(x) {
+console.log("In function B");
+return false;
+};
+classAC.c.implementation = function(x) {
+console.log("In function C");
+return false;
+};
 
-  console.log("Root Bypass Complete");
+console.log("Root Bypass Complete");
 
-  // ---- vv ------- Part 2 ----- vv ----- //
+// ---- vv ------- Part 2 ----- vv ----- //
 
-  console.log("Finding Password....");
+console.log("Finding Password....");
 
-  classAA = Java.use("sg.vantagepoint.a.a");
-  // Method a() in a.a
-  classAA.a.implementation = function(x1, x2) {
-    console.log("In function a.a.a()");
-    // Call this function and store its return value
-    //x1 and x2 are the variables the *app* is calling with.
-    rawFunctionCall = this.a(x1, x2);
-    // Convert Byte[] to String
-    output = arrToStr(rawFunctionCall);
-    // Log the password.
-    console.log("=====> " + output);
-    return rawFunctionCall;
-  };
+classAA = Java.use("sg.vantagepoint.a.a");
+// Method a() in a.a
+classAA.a.implementation = function(x1, x2) {
+console.log("In function a.a.a()");
+// Call this function and store its return value
+//x1 and x2 are the variables the _app_ is calling with.
+rawFunctionCall = this.a(x1, x2);
+// Convert Byte[] to String
+output = arrToStr(rawFunctionCall);
+// Log the password.
+console.log("=====> " + output);
+return rawFunctionCall;
+};
 });
 {% endhighlight %}
 
@@ -366,12 +365,12 @@ The code below the `part 2` comment sits and waits for function `a.a.a()` to be 
 When the function is called like normal, we shortstop the result and print it. One final step that must be done before printing is to convert the byte array to a string, which is done with
 a simple `for` loop.
 
-
 Now run frida again with our new payload and the same flags.
 <br><br>
 We need to trigger function `sg.vantagepoint.a.a.a()` to run naturally
-in the app. You can do this by typing in an arbitrary password  and pressing `verify` in the app. Doing so
+in the app. You can do this by typing in an arbitrary password and pressing `verify` in the app. Doing so
 should trigger our new code and print the decrypted password in the console!
+
 ```
 tracy:josh$ frida -U --no-pause -l crack.js -f sg.vantagepoint.uncrackable1
      ____
@@ -383,7 +382,7 @@ tracy:josh$ frida -U --no-pause -l crack.js -f sg.vantagepoint.uncrackable1
    . . . .       exit/quit -> Exit
    . . . .
    . . . .   More info at http://www.frida.re/docs/home/
-Spawned `sg.vantagepoint.uncrackable1`. Resuming main thread!           
+Spawned `sg.vantagepoint.uncrackable1`. Resuming main thread!
 [Google Pixel::sg.vantagepoint.uncrackable1]-> Root Bypass Complete
 Finding Password....
 In function A

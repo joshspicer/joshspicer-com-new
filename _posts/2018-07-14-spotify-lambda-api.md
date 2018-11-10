@@ -3,21 +3,20 @@ layout: post
 title: Spotify "Now Playing" with AWS Lambda
 date: 2018-07-14
 permalink: spotify-now-playing
+favorite: "true"
 ---
 
 I really love the social media aspect that Spotify brings to music. I discover so many great tracks by
-exploring what my friends listen to.  I've been really curious about uses for AWS Lambda and what it can accomplish.
+exploring what my friends listen to. I've been really curious about uses for AWS Lambda and what it can accomplish.
 Let's get started!
 <br><br>
 If you're curious what the finished product looks like, look up! My header should say something like:
 <br><br>
 ![example]({{site.url}}/assets/resources-spotify-lambda-post/example.png)
 
-
 <h2>Overview</h2>
 In this guide we will be hosting a function on AWS Lambda, and using Spotify's web API to return a JSON object with the user's current or last played Spotify track. We will utilize Amazon's API Gateway to create a REST endpoint that can be used anywhere
 (I use it on my personal website) to serve dynamic content to static pages. I wrote the lambda function in python, but this should be easily adaptable to work with any language.
-
 
 <h2>Prereqs</h2>
 - AWS Account (Free Tier)
@@ -26,7 +25,7 @@ In this guide we will be hosting a function on AWS Lambda, and using Spotify's w
 
 <h2>Create Spotify Developer Account</h2>
 
-The first step is to visit the [Spotify developer dashboard][spotifyDashboard] and create a new project. This process will grant you a
+The first step is to visit the [Spotify developer dashboard][spotifydashboard] and create a new project. This process will grant you a
 Client ID and Client Secret. You'll need to base64 encode these two values with a colon separating them.
 <br><br>
 Encoding the token can be done by this simple shell command.
@@ -40,7 +39,6 @@ as long as you set one and it's consistent in all the following steps. I used `h
 
 ![spotify-callback]({{site.url}}/assets/resources-spotify-lambda-post/spotify-callback.png)
 
-
 <h2>Generate Refresh Token</h2>
 
 Spotify's API requires direct user authorization to access information like current track.
@@ -52,7 +50,7 @@ refresh token and writing some code, we can continually grant ourselves a new ac
 For more info on Spotify API authorization flows, check out [their guide](https://developer.spotify.com/documentation/general/guides/authorization-guide/).
 <br><br>
 You'll need a refresh token to kick everything off, which you can generate by simply asking Spotify for it.
-Make sure to provide the correct scopes `user-read-currently-playing`,  `user-read-playback-state`, `user-read-recently-played` , etc as needed.
+Make sure to provide the correct scopes `user-read-currently-playing`, `user-read-playback-state`, `user-read-recently-played` , etc as needed.
 <br><br>
 Visit this URL with your information filled in. This is where Spotify will ask you to login.
 After successfully authenticating, you'll see an access code in the URL. Save that for the next step.
@@ -61,8 +59,7 @@ After successfully authenticating, you'll see an access code in the URL. Save th
 <br><br>
 Issue this curl command in terminal with the access code you just generated.
 <br><br>
-`curl -H "Authorization: Basic <YOUR BASE-64'd APP TOKEN>" -d grant_type=authorization_code -d code=<YOUR ACCESS CODE> -d redirect_uri=<YOUR CALLBACK URL>
-https://accounts.spotify.com/api/token`
+`curl -H "Authorization: Basic <YOUR BASE-64'd APP TOKEN>" -d grant_type=authorization_code -d code=<YOUR ACCESS CODE> -d redirect_uri=<YOUR CALLBACK URL> https://accounts.spotify.com/api/token`
 
 You should now have a refresh token. We can use this python function to then receive a new access token, given a refresh token and client information. This function places the newly fetched access token, as well as some metadata, into a database (more on that later).
 
@@ -83,20 +80,19 @@ def refreshTheToken(refreshToken):
                                         'accessToken': spotifyToken['access_token']})
 ```
 
-
 <h2>Start a new Lambda Project</h2>
 
 Lambda, for those unfamiliar, is a compute platform that allows you to run code in the cloud without
 the hassle of configuring an entire server instance. Code can be running by hitting a REST endpoint.
 <br><br>
 Navigate to the [AWS Lambda page][lambda] and create a new function. I'll be making my function in region `us-east-2`, and writing the program in
-python 2.  Create a role that permits basic Amazon Lambda execution, as well as Dynamo DB access (you'll need that later). I named my role `spotify-listener`.
+python 2. Create a role that permits basic Amazon Lambda execution, as well as Dynamo DB access (you'll need that later). I named my role `spotify-listener`.
 
 ![create-function-photo]({{site.url}}/assets/resources-spotify-lambda-post/create-lambda.png)
 
 <h2>Configuring Python Environment</h2>
 
-Before we can continue we need to upload all the dependencies of our project into lambda so we can use them later when we start writing code.  Luckily the only
+Before we can continue we need to upload all the dependencies of our project into lambda so we can use them later when we start writing code. Luckily the only
 dependency not pre-packaged in the lambda environment is an HTTP requests package.
 <br><br>
 I chose to use [requests](http://docs.python-requests.org/en/master/). You'll need to first download the package and _its_ dependencies with pip. Save these files into a temporary directory.
@@ -113,7 +109,6 @@ prefix=
 Create a zip file, and upload this to your lambda function's dashboard. Now we can swap to `Edit Code inline` mode. Create a `.py` file to match your function' `handler` field. Your environment should now look like this:
 
 ![aws-editor]({{site.url}}/assets/resources-spotify-lambda-post/aws-editor.png)
-
 
 <h2>DynamoDB</h2>
 
@@ -132,10 +127,9 @@ You can then link this table in the Lambda API console under `Add triggers => Dy
 
 ![dynamo-3]({{site.url}}/assets/resources-spotify-lambda-post/dynamo-3.png)
 
-
 <h2>API Gateway</h2>
 
-Ok - one more piece of setup before we can begin writing our lambda function!  We need a way to invoke our function from across the internet. AWS again offers
+Ok - one more piece of setup before we can begin writing our lambda function! We need a way to invoke our function from across the internet. AWS again offers
 a service called [API Gateway](https://us-east-2.console.aws.amazon.com/apigateway/home?region=us-east-2#/apis), which translates your lambda function into a REST API.
 <br><br>
 Create a new API that is edge-optimized. After, navigate to your API's Resources page and create a new resource - I named my endpoint `current`.
@@ -154,9 +148,6 @@ This next page is where you'll be given the option to point the API to your lamb
 
 It took me a while to understand why I need "Lambda Proxy" enabled. I found a lot of articles online outlining the pros and cons of using lambda proxy.
 For me, this setting made it easy for me to return json, and to return appropriate status codes from within my python function.
-
-
-
 
 <h2>Optional: Set up DNS</h2>
 
@@ -186,6 +177,7 @@ table = dynamodb.Table('SpotifyState')
 ```
 
 I also hardcode the refresh token at the top of the file
+
 ```
 refreshToken = '<YOUR REFRESH TOKEN>'
 ```
@@ -230,7 +222,6 @@ Spotify.
 The response from Spotify has waaaay too much information.
 
 ```
-
   "context": {
     "external_urls" : {
       "spotify" : "http://open.spotify.com/user/spotify/playlist/49znshcYJROspEqBoHg3Sv"
@@ -278,11 +269,11 @@ The response from Spotify has waaaay too much information.
         },
 
         {....truncated....}
-
 ```
 
 I then try to unwrap the JSON response from Spotify. Sometimes I can't get my currently playing song (podcasts aren't reported correct).
 If that's the case, i'll settle for my last played song.
+
 ```
     # Try currently playing
     try:
@@ -316,6 +307,7 @@ Lastly, I return this data and structure it into a simple JSON object.
 ```
 
 My endpoint is `https://api.joshspicer.com/spotify/current`. If you GET that uri, you'll see a JSON response.
+
 ```
 {
 artistName: "Jukebox The Ghost",
@@ -331,6 +323,7 @@ You can use this information anyway you'd like. I wanted to utilize Lambda so th
 content onto my static webpage hosted on Github Pages.
 
 Here is some javascript to hit our API.
+
 ```
 var xhttp = new XMLHttpRequest();
 xhttp.onreadystatechange = function() {
@@ -350,6 +343,7 @@ xhttp.send();
 ```
 
 Place the following onto the page you'd like to display your "now playing" line.
+
 ```
 <p>
   <span id='spotify'>{default value}</span>
@@ -358,5 +352,5 @@ Place the following onto the page you'd like to display your "now playing" line.
 
 <h2>All done!</h2>
 
-[spotifyDashboard]: https://developer.spotify.com/dashboard/
+[spotifydashboard]: https://developer.spotify.com/dashboard/
 [lambda]: https://us-east-2.console.aws.amazon.com/lambda/home?region=us-east-2#/functions

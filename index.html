@@ -10,8 +10,14 @@ layout: index
 		<ul class="post-list">
 			{% for post in site.posts %}
 			<li>
+
 				<small class="datetime" data-time="{{ post.date }}">{{ post.date | date_to_string }} </small>
-				<a class="notes-listing module line-clamp" href="{{ post.url }}">{{ post.title }}</a>
+				<a class="notes-listing module line-clamp" href="{{ post.url }}">
+					{% if post.favorite == "true" %}
+					<i style="color:orange;font-size:12px;margin-bottom:2px" class="fas fa-star"></i>
+					{% endif %}
+					{{ post.title }}
+				</a>
 			</li>
 			{% endfor %}
 		</ul>

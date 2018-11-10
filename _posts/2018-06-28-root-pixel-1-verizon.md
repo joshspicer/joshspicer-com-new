@@ -3,6 +3,7 @@ layout: post
 title: Rooting your Bootlocked Pixel Phone (Verizon Edition)
 date: 2018-06-28
 permalink: root-pixel-1
+favorite: "true"
 ---
 
 I bought a new Pixel phone on Ebay a couple months ago for testing an Android app i'm developing. To my surprise,
@@ -10,9 +11,8 @@ the phone I received in the mail was not the unlocked Google version I thought I
 Verizon version.
 <br><br>
 I was hoping to eventually root the device in order to play around with some pentesting tools (specifically Frida). Sadly, I wasn't able
-to find an easy solution *until now*.
+to find an easy solution _until now_.
 <br><br>
-
 
 <h2>Unlock Bootloader</h2>
 
@@ -21,20 +21,20 @@ illustrating how he unlocked the bootloader on a Verizon Pixel. His article was 
 <br><br>
 The steps are as follows, adapted slightly based on my experience and environment (Ubuntu):
 
-1. Remove Google account and PIN/Fingerprint from your device.
-2. Eject sim card from your device.
-3. Factory reset your device. Skip **everything** in the setup wizard.
-4. Go to Developer Options and [enable USB debugging](https://www.embarcadero.com/starthere/xe5/mobdevsetup/android/en/enabling_usb_debugging_on_an_android_device.html).
-5. Connect your phone to computer.
-6. Open terminal in adb directory and type
-`adb shell pm uninstall --user 0 com.android.phone`
-7. Restart your device.
-8. Connect to WiFi, open Chrome and go to any website. (nobody knows why we do this??)
-9. Go to Developer Options and enable OEM unlocking.
+1.  Remove Google account and PIN/Fingerprint from your device.
+2.  Eject sim card from your device.
+3.  Factory reset your device. Skip **everything** in the setup wizard.
+4.  Go to Developer Options and [enable USB debugging](https://www.embarcadero.com/starthere/xe5/mobdevsetup/android/en/enabling_usb_debugging_on_an_android_device.html).
+5.  Connect your phone to computer.
+6.  Open terminal in adb directory and type
+    `adb shell pm uninstall --user 0 com.android.phone`
+7.  Restart your device.
+8.  Connect to WiFi, open Chrome and go to any website. (nobody knows why we do this??)
+9.  Go to Developer Options and enable OEM unlocking.
 10. Reboot into bootloader and via terminal run
-`fastboot oem unlock`
-or
-`fastboot flashing unlock`
+    `fastboot oem unlock`
+    or
+    `fastboot flashing unlock`
 11. Profit
 
 <h3>Notes</h3>
@@ -49,13 +49,13 @@ or
 <h2>Rooting Prereqs</h2>
 
 These are the requirements and files I found necessary.
+
 - `adb` and `fastboot` (which you already have from the bootloader bit above)
 - A cable to connect phone to computer
 - ["SailFish" Pixel Factory Image v8.1-May](https://dl.google.com/dl/android/aosp/sailfish-opm4.171019.016.b1-factory-68c3a77d.zip) (downloaded to host computer)
 - [twrp-3.2.1-2-sailfish.img](https://dl.twrp.me/sailfish/twrp-3.2.1-2-sailfish.img.html) (downloaded to host computer)
-- [twrp-pixel-installer-sailfish-3.2.1-2.zip](https://dl.twrp.me/sailfish/twrp-pixel-installer-sailfish-3.2.1-2.zip.html)  (downloaded to **device file system** BEFORE starting)
-- [Magisk](https://forum.xda-developers.com/apps/magisk/official-magisk-v7-universal-systemless-t3473445)  (downloaded to **device file system** BEFORE starting)
-
+- [twrp-pixel-installer-sailfish-3.2.1-2.zip](https://dl.twrp.me/sailfish/twrp-pixel-installer-sailfish-3.2.1-2.zip.html) (downloaded to **device file system** BEFORE starting)
+- [Magisk](https://forum.xda-developers.com/apps/magisk/official-magisk-v7-universal-systemless-t3473445) (downloaded to **device file system** BEFORE starting)
 
 <h2>Get rid of all the Verizon</h2>
 
@@ -65,7 +65,6 @@ image. Either way, can't hurt to start with a clean slate.
 Download the image above and follow this steps Google provides on their [factory images](https://developers.google.com/android/images) page.
 Essentially, you'll want to unzip the image archive, plug in your device, and run the `flash-all.sh` it provides. You'll need to make sure the
 correct `fastboot` is in your PATH. Mine wasn't, so I modified the four spots that `fastboot` was called in the script and wrote out the full path (`~/Android/Sdk/platform-tools/fastboot`).
-
 
 <h2>Prep TWRP</h2>
 
@@ -96,10 +95,10 @@ Great! You should now be booted into the twrp interface.
 
 Press the "install" button, navigate to your Downloads folder, and install the `twrp-pixel-installer-sailfish-3.2.1-2.zip` you downloaded to your phone earlier. Let that installation complete (hopefully with no errors).
 <br><br>
-Now go back a few steps to the page we started at, press the `restart` button, and then press `recovery`.  You should now boot into a version of TWRP running entirely on your device.  You can use TWRP to do a whole bunch of things...one of them being rooting the device.
+Now go back a few steps to the page we started at, press the `restart` button, and then press `recovery`. You should now boot into a version of TWRP running entirely on your device. You can use TWRP to do a whole bunch of things...one of them being rooting the device.
 
 <h2>Actually root the device</h2>
 
 Same as last time! Press the "install" button, but this time you're installing the `Magisk` zip you downloaded at the start of this guide.
 <br><br>
-Like magic, your device is now rooted!  I downloaded a free "Root checker" app from the Play Store to confirm. Enjoy!
+Like magic, your device is now rooted! I downloaded a free "Root checker" app from the Play Store to confirm. Enjoy!
